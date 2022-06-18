@@ -11,29 +11,107 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+You can create forms very easy in minimum lines of code
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+it can create form
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+just create list of MyFormObj
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
 ```dart
-const like = 'sample';
+class MyApp extends StatefulWidget {
+  const MyApp({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List<TextEditingController> controllers = [];
+  List<List<MyFormObj>> fullFormObjList = [
+    [
+      MyFormObj(
+          controller: TextEditingController(),
+          serverName: "firstname",
+          title: Texts.firstName.tr,
+          flex: flex,
+          type: MyFormType.text),
+    ],
+    [
+      MyFormObj(
+          controller: TextEditingController(),
+          serverName: "lastname",
+          title: Texts.lastName.tr,
+          flex: flex,
+          type: MyFormType.text),
+    ],
+    [
+      MyFormObj(
+        controller: TextEditingController(),
+        serverName: "birth_day",
+        title: Texts.birthday.tr,
+        type: MyFormType.date,
+        readOnly: true,
+      ),
+    ],
+    [
+      MyFormObj(
+          controller: TextEditingController(),
+          serverName: "province",
+          title: Texts.province.tr,
+          type: MyFormType.singleChoice,
+          readOnly: true,
+          choiceObjs: [
+            ChoiceObj(id: 0, title: "Germany"),
+            ChoiceObj(id: 1, title: "France"),
+          ]),
+    ],
+    [
+      MyFormObj(
+          controller: TextEditingController(),
+          serverName: "gender",
+          title: Texts.gender.tr,
+          type: MyFormType.singleChoice,
+          readOnly: true,
+          flex: flex,
+          choiceObjs: [
+            ChoiceObj(id: 0, title: Texts.male.tr),
+            ChoiceObj(id: 1, title: Texts.female.tr),
+          ])
+    ],
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.white,
+      appBar: AppBar(
+        title: Text("Example"),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text("Complete Form Please",style: AppTextStyles.white_18,),
+            MyFormBuilder(fullFormObjList: fullFormObjList,onSubmit: (map){
+              print(map);
+            },),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+nothing
