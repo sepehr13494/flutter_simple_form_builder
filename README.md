@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
       MyFormObj(
           controller: TextEditingController(),
           serverName: "firstname",
-          title: Texts.firstName.tr,
+          title: "firstname",
           flex: flex,
           type: MyFormType.text),
     ],
@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
       MyFormObj(
           controller: TextEditingController(),
           serverName: "lastname",
-          title: Texts.lastName.tr,
+          title: "lastname",
           flex: flex,
           type: MyFormType.text),
     ],
@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
       MyFormObj(
         controller: TextEditingController(),
         serverName: "birth_day",
-        title: Texts.birthday.tr,
+        title: "Birthday",
         type: MyFormType.date,
         readOnly: true,
       ),
@@ -65,7 +65,7 @@ class _MyAppState extends State<MyApp> {
       MyFormObj(
           controller: TextEditingController(),
           serverName: "province",
-          title: Texts.province.tr,
+          title: "Province",
           type: MyFormType.singleChoice,
           readOnly: true,
           choiceObjs: [
@@ -77,7 +77,7 @@ class _MyAppState extends State<MyApp> {
       MyFormObj(
           controller: TextEditingController(),
           serverName: "gender",
-          title: Texts.gender.tr,
+          title: "Gender",
           type: MyFormType.singleChoice,
           readOnly: true,
           flex: flex,
@@ -99,7 +99,7 @@ class _MyAppState extends State<MyApp> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Complete Form Please",style: AppTextStyles.white_18,),
+            Text("Complete Form Please",style: TextStyle(fontSize: 18),),
             MyFormBuilder(fullFormObjList: fullFormObjList,onSubmit: (map){
               print(map);
             },),
